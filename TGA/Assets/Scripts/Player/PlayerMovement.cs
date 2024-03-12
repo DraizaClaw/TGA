@@ -24,11 +24,12 @@ public class PlayerMovement : MonoBehaviour
 
     public LayerMask GroundLayer;
 
-    public int LookingRight;
+    [HideInInspector] public int LookingRight;
 
+    /*
     float right;
     private float left;
-
+    *///unknown if this is needed. probably not
 
     private void Awake()
     {

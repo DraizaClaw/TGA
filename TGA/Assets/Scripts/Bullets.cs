@@ -31,22 +31,33 @@ public class Bullets : MonoBehaviour
             {
                 Instantiate(BulletPrefab, BulletsContainer.transform);
                 BulletTimeStart = 0;
+
             }
             
         }
-        while (BulletsContainer.transform.childCount == 0)
+
+        //big problem with loops. crashes unity
+        /*
+
+        if (BulletsContainer.transform.childCount > 0)
         {
-            if (BulletTimeStart < BulletTime)
+            //destroy
+            Object.Destroy(BulletsContainer.transform.GetChild(0).gameObject, 5f);
+
+
+            while (BulletsContainer.transform.childCount > 0)
             {
                 rb.velocity = new Vector2(Player.GetComponent<PlayerMovement>().LookingRight * BulletSpeed, 0);
-                BulletTimeStart += 0.1f;
             }
-            else
-            {
-                Object.Destroy(rb.gameObject);
-                break;
-            }
-            
         }
+
+        */
+
+
+
+
+
+
+        
     }
 }
