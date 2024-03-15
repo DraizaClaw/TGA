@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
 
     public LayerMask GroundLayer;
 
-    [HideInInspector] public int LookingRight;
+    [HideInInspector] public bool LookingRight;
 
     /*
     float right;
@@ -53,12 +53,12 @@ public class PlayerMovement : MonoBehaviour
         RigidBody.velocity = new Vector2(horizontalInput * speed, RigidBody.velocity.y);
         if (horizontalInput > 0) //if player looking right
         {
-            LookingRight = 1;
+            LookingRight = true;
 
         }
         else if (horizontalInput < 0) //if player looking left
         {
-            LookingRight = -1;
+            LookingRight = false;
         }
 
 
