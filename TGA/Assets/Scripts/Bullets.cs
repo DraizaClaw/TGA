@@ -5,10 +5,19 @@ using UnityEngine;
 public class Bullets : MonoBehaviour
 {
 
-    [SerializeField] private GameObject BulletsContainer, Player, BulletPrefab;
-    [SerializeField] private float BulletSpeed, BulletTime;
+    //Currently Useless
 
-    private int lookingright;
+
+
+
+
+    /*
+
+    [SerializeField] private GameObject BulletsContainer, Player, BulletPrefab, ChargedBulletPrefab;
+    [SerializeField] private float BulletSpeed, BulletTime, ChargedBulletSpeed, ChargedBulletTime;
+    [SerializeField] private int ChargeTime, Damage, ChargedDamage;
+
+    private int lookingright, TimeCharging;
 
 
     private Rigidbody2D rb;
@@ -18,11 +27,6 @@ public class Bullets : MonoBehaviour
 
     private void Update()
     {
-
-
-        
-
-
         if (Input.GetKeyDown(KeyCode.E) && BulletsContainer.transform.childCount == 0)
         {
             if (Player.GetComponent<PlayerMovement>().LookingRight == true)
@@ -36,14 +40,33 @@ public class Bullets : MonoBehaviour
             //this sets the value for looking right and left
 
 
-            //fire bullets
-            Instantiate(BulletPrefab, BulletsContainer.transform);
 
-            rb = BulletsContainer.GetComponentInChildren<Rigidbody2D>();
 
-            Object.Destroy(BulletsContainer.transform.GetChild(0).gameObject, BulletTime);
+            if (Input.GetKeyUp(KeyCode.E) && TimeCharging > ChargeTime)
+            {
+                //fire charged bullets
+                Instantiate(ChargedBulletPrefab, BulletsContainer.transform);
 
-            rb.velocity = new Vector2(lookingright * BulletSpeed, 0);
+                rb = BulletsContainer.GetComponentInChildren<Rigidbody2D>();
+
+                Object.Destroy(BulletsContainer.transform.GetChild(0).gameObject, BulletTime);
+
+                rb.velocity = new Vector2(lookingright * ChargedBulletSpeed, 0);
+            }
+            else if(Input.GetKeyUp(KeyCode.E) && TimeCharging < ChargeTime)
+            {
+                //fire bullets
+                Instantiate(BulletPrefab, BulletsContainer.transform);
+
+                rb = BulletsContainer.GetComponentInChildren<Rigidbody2D>();
+
+                Object.Destroy(BulletsContainer.transform.GetChild(0).gameObject, BulletTime);
+
+                rb.velocity = new Vector2(lookingright * BulletSpeed, 0);
+            }
+
+
+            
         }
 
         if (BulletsContainer.transform.childCount != 0)
@@ -53,4 +76,6 @@ public class Bullets : MonoBehaviour
 
 
     }
+
+    */
 }

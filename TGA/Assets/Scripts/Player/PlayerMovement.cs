@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
 {
     //this will make ther player jump and move
 
-
+    private bool facingRight;
     private Rigidbody2D RigidBody;
     private BoxCollider2D boxcollider;
 
@@ -35,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     {
         RigidBody = GetComponent<Rigidbody2D>();
         boxcollider = GetComponent<BoxCollider2D>();
+        facingRight = true;
     }
 
 
@@ -51,51 +52,44 @@ public class PlayerMovement : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
 
         RigidBody.velocity = new Vector2(horizontalInput * speed, RigidBody.velocity.y);
-        if (horizontalInput > 0) //if player looking right
+
+        if (Input.GetAxisRaw("Horizontal") > 0.5f || Input.GetAxisRaw("Horizontal") < -0.5f)// if we are moving
         {
-            LookingRight = true;
-
-        }
-        else if (horizontalInput < 0) //if player looking left
-        {
-            LookingRight = false;
-        }
-
-
-
-
-
-        /*
-        Mathf.Clamp(right, -0.5f, 0.5f);
-        Mathf.Clamp(left, -0.5f, 0.5f);
-
-
-        if (Input.GetKey((KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Right"))))
-        {
-            right += 0.05f;
-            RigidBody.velocity = new Vector2(right * speed, RigidBody.velocity.y * Time.deltaTime) ;
-        }
-        else
-        {
-            right = 0;
+            transform.Translate(new Vector3(Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime, 0f, 0f));
+            if (Input.GetAxisRaw("Horizontal") > 0.5f && !facingRight)
+            {
+                //If we're moving right but not facing right, flip the sprite and set     facingRight to true.
+                Flip();
+                facingRight = true;
+            }
+            else if (Input.GetAxisRaw("Horizontal") < 0.5f && facingRight)
+            {
+                //If we're moving left but not facing left, flip the sprite and set facingRight to false.
+                Flip();
+                facingRight = false;
+            }
         }
 
-        if (Input.GetKey((KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Left"))))
-        {
-            left -= 0.05f;
-            RigidBody.velocity = new Vector2(left * speed, RigidBody.velocity.y * Time.deltaTime);
-        }
-        else
-        {
-            left = 0;
-        }
+            /*
+            if (Input.GetAxisRaw("Horizontal") > 0.5f) //if player looking right
+            {
+                transform.Rotate(0f, 0f, 0f);
+                // LookingRight = true;
 
-        */
+            }
+            else if (Input.GetAxisRaw("Horizontal") < -0.5f) //if player looking left
+            {
+                transform.Rotate(0f, 180f, 0f);
+                // LookingRight = false;
+            }
+            */
 
 
 
 
-        onground = IsTouchingGround();
+
+
+            onground = IsTouchingGround();
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (onground == true)
@@ -111,9 +105,20 @@ public class PlayerMovement : MonoBehaviour
     {
         // Perform a raycast downwards to check for ground contact
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1, GroundLayer);
-
+        //the number '1' is the distance the player has to be above the ground to jump
         // Check if the raycast hits the ground
         return hit.collider != null;
+    }
+
+    private void Flip()
+    {
+        // Switch the way the player is labelled as facing
+        facingRight = !facingRight;
+
+        // Multiply the player's x local scale by -1
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
     }
 
 
