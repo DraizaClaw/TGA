@@ -119,8 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d60b45f1b1b09e47a1ae9c9a78f1890, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 3
-  LifeTime: 5
+  Speed: 100
+  LifeTime: 1
   Damage: 0
   rb: {fileID: 7010298049894017321}
-  Player: {fileID: 7333686247284629661, guid: f829c00311e51ee4eb63811b37eae18a, type: 3}
