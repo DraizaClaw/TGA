@@ -590,6 +590,14 @@ PrefabInstance:
       value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 4153976329769377612, guid: f829c00311e51ee4eb63811b37eae18a, type: 3}
+      propertyPath: ChargeMin
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4153976329769377612, guid: f829c00311e51ee4eb63811b37eae18a, type: 3}
+      propertyPath: ChargeTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4153976329769377612, guid: f829c00311e51ee4eb63811b37eae18a, type: 3}
       propertyPath: ChargeSpeed
       value: 1
       objectReference: {fileID: 0}

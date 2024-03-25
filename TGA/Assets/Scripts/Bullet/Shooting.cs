@@ -29,15 +29,23 @@ public class Shooting : MonoBehaviour
             }
         }
 
-
-        if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E))
         {
             Instantiate(BulletPrefab,Firepoint.position,Firepoint.rotation);
             ChargeTime = 0;
         }
+
+        else if (Input.GetKeyUp(KeyCode.E) && ChargeTime < ChargeMin) 
+        {
+            isCharging = false;
+            ChargeTime = 0;
+                }
+
         else if(Input.GetKeyUp(KeyCode.E) && ChargeTime >= ChargeMin)
         {
             ReleaseCharge();
+            isCharging = false;
+            ChargeTime = 0;
         }
     }
 
@@ -46,7 +54,6 @@ public class Shooting : MonoBehaviour
     {
         Instantiate(ChargedBulletPrefab, Firepoint.position, Firepoint.rotation);
         isCharging = false;
-        ChargeTime = 0;
     }
 
 
