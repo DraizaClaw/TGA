@@ -218,6 +218,7 @@ MonoBehaviour:
   ChargedBulletPrefab: {fileID: 1994717380920559722, guid: 5ae445971cc09874aa41214b7aec8201, type: 3}
   ChargeSpeed: 1
   ChargeTime: 5
+  ChargeMin: 3
 --- !u!1 &7333686247284629661
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,6 +232,7 @@ GameObject:
   - component: {fileID: 7333686247284629659}
   - component: {fileID: 7333686247284629660}
   - component: {fileID: 7333686247284629656}
+  - component: {fileID: 5754250123109755508}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -297,7 +299,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.8030836, g: 0.8113208, b: 0.30922037, a: 1}
+  m_Color: {r: 0.80392164, g: 0.8117648, b: 0.30980393, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -372,3 +374,15 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   LookingRight: 0
+--- !u!114 &5754250123109755508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7333686247284629661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff324e1ae02107c4bbfab31162645b68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
