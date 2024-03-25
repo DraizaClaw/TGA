@@ -9,8 +9,12 @@ public class Shooting : MonoBehaviour
     [SerializeField] private Transform Firepoint;
 
     [SerializeField] private GameObject ChargedBulletPrefab;
-    [SerializeField] private float ChargeSpeed,ChargeTime;
+    [SerializeField] private float ChargeSpeed;
+    
+    public float ChargeTime;
+    public float ChargeMin;
     private bool isCharging;
+    
 
 
     private void Update()
@@ -31,7 +35,7 @@ public class Shooting : MonoBehaviour
             Instantiate(BulletPrefab,Firepoint.position,Firepoint.rotation);
             ChargeTime = 0;
         }
-        else if(Input.GetKeyUp(KeyCode.E) && ChargeTime >= 2)
+        else if(Input.GetKeyUp(KeyCode.E) && ChargeTime >= ChargeMin)
         {
             ReleaseCharge();
         }
