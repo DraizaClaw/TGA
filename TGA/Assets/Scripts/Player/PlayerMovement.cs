@@ -88,16 +88,14 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-
-            onground = IsTouchingGround();
+        
+        onground = IsTouchingGround();
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (onground == true)
             {
                 RigidBody.velocity = new Vector2(RigidBody.velocity.x, jumpheight);
             }
-
-
         }
     }
 

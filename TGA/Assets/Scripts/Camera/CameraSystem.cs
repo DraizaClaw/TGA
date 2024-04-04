@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class CameraSystem : MonoBehaviour
 {
-    [SerializeField] private GameObject player;
-    // Update is called once per frame
-    void Update()
+    [SerializeField] private GameObject Target;
+    [SerializeField] private float speed;
+    private Vector3 TargetPos;
+
+    private void Update()
     {
-        this.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -10);
+        TargetPos = new Vector3(Target.transform.position.x, Target.transform.position.y, -10);
+        transform.position = Vector3.Lerp(transform.position, TargetPos, speed * Time.deltaTime);
     }
 }
