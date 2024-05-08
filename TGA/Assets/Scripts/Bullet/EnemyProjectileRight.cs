@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyProjectile : MonoBehaviour
+public class EnemyProjectileRight : MonoBehaviour
 {
     [SerializeField] private float Speed, LifeTime;
 
@@ -17,7 +17,7 @@ public class EnemyProjectile : MonoBehaviour
     {
         //change belwo va;ue of enemy
         //Enemy = this.GetComponentInParent;
-        rb.velocity = new Vector2(this.GetComponentInParent<Transform>().localScale.x * -1 , 0f) * Speed;
+        rb.velocity = new Vector2(1f , 0f) * Speed;
 
 
         Invoke("DestroyProjectile", LifeTime);

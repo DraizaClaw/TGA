@@ -2,28 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class EnemyProjectileLeft : MonoBehaviour
 {
-    /*
-    [SerializeField] private GameObject BulletsContainer, Player, BulletPrefab;
-    */
     [SerializeField] private float Speed, LifeTime;
-    
+
     [SerializeField] private int Damage;
 
     [SerializeField] private Rigidbody2D rb;
 
-    private GameObject Player;
+    private GameObject Enemy;//not needed for now ig
 
     // Start is called before the first frame update
     void Start()
     {
-        Player = GameObject.Find("Player");
-        rb.velocity = new Vector2(Player.GetComponent<Transform>().localScale.x, 0f) * Speed;
+        //change belwo va;ue of enemy
+        //Enemy = this.GetComponentInParent;
+        rb.velocity = new Vector2(-1f , 0f) * Speed;
+
+
         Invoke("DestroyProjectile", LifeTime);
     }
-
-
 
     void DestroyProjectile()
     {

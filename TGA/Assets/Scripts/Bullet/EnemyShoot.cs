@@ -5,8 +5,8 @@ using UnityEngine;
 public class EnemyShoot : MonoBehaviour
 {
 
-    [SerializeField] private GameObject EnemyBulletPrefab;
-    [SerializeField] private GameObject bulletcase;//used as a case to hold bullet clones and guide them (left or right)
+    [SerializeField] private GameObject EnemyBulletLeft;
+    [SerializeField] private GameObject EnemyBulletRight;
     [SerializeField] private GameObject EnemyParent;
     [SerializeField] private Transform Firepoint;
     [SerializeField] private LayerMask PlayerLayerMask;
@@ -19,7 +19,11 @@ public class EnemyShoot : MonoBehaviour
 
         if (SeesPlayer())
         {
-            Instantiate(EnemyBulletPrefab, Firepoint.position, Firepoint.rotation,EnemyParent.transform);
+            if (EnemyParent.GetComponent<Transform>().localScale.x > 0)//if posotive //if loooking right
+                Instantiate(EnemyBulletRight, Firepoint.position, Firepoint.rotation, EnemyParent.transform);
+            else
+                Instantiate(EnemyBulletLeft, Firepoint.position, Firepoint.rotation, EnemyParent.transform); ;
+
         }
     }
 
