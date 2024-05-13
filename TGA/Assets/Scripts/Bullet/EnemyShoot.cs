@@ -17,15 +17,23 @@ public class EnemyShoot : MonoBehaviour
     {
         //draw raycast
 
+        
+            StartCoroutine(Shoot());
+    }
+
+    IEnumerator Shoot()
+    {
         if (SeesPlayer())
         {
             if (EnemyParent.GetComponent<Transform>().localScale.x > 0)//if posotive //if loooking right
                 Instantiate(EnemyBulletRight, Firepoint.position, Firepoint.rotation, EnemyParent.transform);
             else
-                Instantiate(EnemyBulletLeft, Firepoint.position, Firepoint.rotation, EnemyParent.transform); ;
-
-        }
+                Instantiate(EnemyBulletLeft, Firepoint.position, Firepoint.rotation, EnemyParent.transform);
+            yield return new WaitForSeconds(2);
+        }    
     }
+
+
 
     private bool SeesPlayer()
     {
