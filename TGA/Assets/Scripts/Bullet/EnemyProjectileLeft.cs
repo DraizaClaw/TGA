@@ -15,11 +15,7 @@ public class EnemyProjectileLeft : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //change belwo va;ue of enemy
-        //Enemy = this.GetComponentInParent;
         rb.velocity = new Vector2(-1f , 0f) * Speed;
-
-
         Invoke("DestroyProjectile", LifeTime);
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -27,7 +23,7 @@ public class EnemyProjectileLeft : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             Destroy(gameObject);
-            collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+            collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, collision.gameObject.GetComponent<Rigidbody2D>().velocity.y);
         }
         if (collision.gameObject.tag == "Ground")
         {

@@ -11,25 +11,31 @@ public class EnemyShoot : MonoBehaviour
     [SerializeField] private Transform Firepoint;
     [SerializeField] private LayerMask PlayerLayerMask;
     [SerializeField] private int Range;
+    [SerializeField] private float CoolDownMin;
+                     private float CoolDown;
 
 
     private void Update()
     {
-        //draw raycast
-
+        StartCoroutine( Shoot() );
+        if (CoolDown > 0)
+        {
+            CoolDown -= 1 * Time.deltaTime;
+        }
         
-            StartCoroutine(Shoot());
     }
 
     IEnumerator Shoot()
     {
-        if (SeesPlayer())
+        if (SeesPlayer() && CoolDown <= 0)
         {
+
             if (EnemyParent.GetComponent<Transform>().localScale.x > 0)//if posotive //if loooking right
                 Instantiate(EnemyBulletRight, Firepoint.position, Firepoint.rotation, EnemyParent.transform);
             else
-                Instantiate(EnemyBulletLeft, Firepoint.position, Firepoint.rotation, EnemyParent.transform);
-            yield return new WaitForSeconds(2);
+                Instantiate(EnemyBulletLeft, Firepoint.position, Firepoint.rotation, EnemyParent.transform); //if player to the right shoot right etc.
+            CoolDown = CoolDownMin;
+            yield return new WaitForSeconds(0.1f);
         }    
     }
 

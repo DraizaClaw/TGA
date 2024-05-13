@@ -52,6 +52,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   Range: 3
+  CoolDownMin: 1
 --- !u!1 &707807713910135587
 GameObject:
   m_ObjectHideFlags: 0
