@@ -21,7 +21,7 @@ public class PlayerAnimation : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().color = Color.red;//if charged shot is ready
         }
-        else if (chargetime < 1) 
+        else if (chargetime < 1.5) 
         {
             GetComponent<SpriteRenderer>().color = Color.yellow;//neutral
         }
