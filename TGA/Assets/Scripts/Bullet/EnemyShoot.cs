@@ -11,6 +11,8 @@ public class EnemyShoot : MonoBehaviour
     [SerializeField] private Transform Firepoint;
     [SerializeField] private LayerMask PlayerLayerMask;
     [SerializeField] private int Range;
+    [SerializeField] private int EnemyDamage;
+
     [SerializeField] private float CoolDownMin;
                      private float CoolDown;
 
@@ -31,9 +33,17 @@ public class EnemyShoot : MonoBehaviour
         {
 
             if (EnemyParent.GetComponent<Transform>().localScale.x > 0)//if posotive //if loooking right
+            {
+                EnemyBulletRight.GetComponent<EnemyProjectileRight>().Damage = EnemyDamage;
                 Instantiate(EnemyBulletRight, Firepoint.position, Firepoint.rotation, EnemyParent.transform);
+            }
+
             else
+            {
+                EnemyBulletLeft.GetComponent<EnemyProjectileLeft>().Damage = EnemyDamage;
                 Instantiate(EnemyBulletLeft, Firepoint.position, Firepoint.rotation, EnemyParent.transform); //if player to the right shoot right etc.
+            }//if looking right shoot right //if looking left shoot left
+
             CoolDown = CoolDownMin;
             yield return new WaitForSeconds(0.1f);
         }    

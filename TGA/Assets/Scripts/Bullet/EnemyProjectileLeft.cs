@@ -6,7 +6,7 @@ public class EnemyProjectileLeft : MonoBehaviour
 {
     [SerializeField] private float Speed, LifeTime;
 
-    [SerializeField] private int Damage;
+    public int Damage;
 
     [SerializeField] private Rigidbody2D rb;
 
