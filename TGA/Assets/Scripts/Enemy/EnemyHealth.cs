@@ -6,7 +6,7 @@ public class EnemyHealth : MonoBehaviour
 {
 
     [SerializeField] private int StartingHealth;
-                     private int currentHealth;
+                     public int currentHealth;
 
     private void Start()
     {
@@ -17,16 +17,6 @@ public class EnemyHealth : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<Projectile>(out Projectile projectile))
             currentHealth -= projectile.Damage;
-    }
-
-    private void Update()
-    {
-        //print("Health: " + currentHealth);
-        if (currentHealth <= 0)
-        {
-            Destroy(gameObject);
-
-        }
     }
 
 
