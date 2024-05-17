@@ -151,8 +151,9 @@ GameObject:
   - component: {fileID: 2972418450503022187}
   - component: {fileID: 3308509216310653066}
   - component: {fileID: 1087075333574603074}
+  - component: {fileID: 3032508764610743966}
   m_Layer: 0
-  m_Name: Stationary Enemy
+  m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -274,6 +275,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &3032508764610743966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3394162439287769852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 771623f54411e6f47a0880b01602a1ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartingHealth: 5
 --- !u!1 &3623912527886871777
 GameObject:
   m_ObjectHideFlags: 0

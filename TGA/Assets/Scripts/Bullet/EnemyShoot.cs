@@ -51,7 +51,7 @@ public class EnemyShoot : MonoBehaviour
 
 
 
-    private bool SeesPlayer()
+    public bool SeesPlayer()
     {
         Debug.DrawRay(transform.position, Vector2.right * EnemyParent.transform.localScale.x);
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right * EnemyParent.transform.localScale.x, Range, PlayerLayerMask);

@@ -122,7 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 10
   LifeTime: 1
-  Damage: 0
+  Damage: 1
   rb: {fileID: 7010298049894017321}
 --- !u!58 &-3328435584070310367
 CircleCollider2D:
