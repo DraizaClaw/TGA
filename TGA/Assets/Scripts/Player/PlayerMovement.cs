@@ -44,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     //tweak these. player gains momentum but loses it the moment the else statement occurs
-    private void Update()
+    private void Update(/*      Makes player move left/right and jump     */)
     {
 
 
