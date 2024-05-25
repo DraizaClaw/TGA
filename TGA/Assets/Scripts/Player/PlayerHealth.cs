@@ -7,15 +7,13 @@ public class PlayerHealth : MonoBehaviour
 {
     // Start is called before the first frame update
     public int Health;
-    private int CurrentHealth;
+    public int CurrentHealth;
 
-    [SerializeField] private GameObject DeathScreen;
     [SerializeField] private Text HealthText;
 
 
     private void Start()
     {
-        DeathScreen.SetActive(false);
         CurrentHealth = Health;
     }
 
@@ -33,10 +31,9 @@ public class PlayerHealth : MonoBehaviour
         HealthText.text = "Health = " + CurrentHealth;
         if (CurrentHealth <= 0)
         {
-            print("Dead");
-            Time.timeScale = 0;
-            DeathScreen.SetActive(true);
-            CurrentHealth = 0; //for health text //asthetics
+            CurrentHealth = 0; //for health text //asthetics /*not needed?*/
+
+            Destroy(gameObject);
 
         }
     }

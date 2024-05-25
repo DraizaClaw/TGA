@@ -400,3 +400,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 5
+  DeathScreen: {fileID: 0}
+  HealthText: {fileID: 0}
