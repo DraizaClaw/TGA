@@ -6266,6 +6266,14 @@ PrefabInstance:
       propertyPath: DeathScreen
       value: 
       objectReference: {fileID: 724344764}
+    - target: {fileID: 7333686247284629656, guid: f829c00311e51ee4eb63811b37eae18a, type: 3}
+      propertyPath: DashSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7333686247284629656, guid: f829c00311e51ee4eb63811b37eae18a, type: 3}
+      propertyPath: DashLength
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7333686247284629657, guid: f829c00311e51ee4eb63811b37eae18a, type: 3}
       propertyPath: m_RootOrder
       value: 1

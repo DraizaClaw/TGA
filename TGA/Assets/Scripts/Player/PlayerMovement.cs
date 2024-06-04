@@ -14,11 +14,11 @@ public class PlayerMovement : MonoBehaviour
 
     private bool facingRight;
     private Rigidbody2D RigidBody;
-    private BoxCollider2D boxcollider;
+    private BoxCollider2D boxcollider;//may not be needed
 
     private float horizontalInput;
     private bool onground;
-
+    [Header("Movement")]
     [SerializeField] private float speed;
     [SerializeField] private float jumpheight;
 
@@ -26,28 +26,34 @@ public class PlayerMovement : MonoBehaviour
 
     [HideInInspector] public bool LookingRight;
 
-    /*
-    float right;
-    private float left;
-    *///unknown if this is needed. probably not
+    [Header("Dash")]
+    private bool CanDash = true;
+    private bool isDashing;
+    [SerializeField] private float DashPower;
+    [SerializeField] private float DashTime;
+    [SerializeField] private float DashCooldown;
+    private TrailRenderer tr;//header dosen't work for some reason
+
+
 
     private void Awake()
     {
         RigidBody = GetComponent<Rigidbody2D>();
         boxcollider = GetComponent<BoxCollider2D>();
+        tr = GetComponent<TrailRenderer>();
         facingRight = true;
     }
 
 
 
-
-
-
-    //tweak these. player gains momentum but loses it the moment the else statement occurs
+    //tweak these. player gains momentum but loses it the moment the else statement occurs //old line prob
     private void Update(/*      Makes player move left/right and jump     */)
     {
 
-
+        if (isDashing)
+        {
+            return;
+        }
 
         horizontalInput = Input.GetAxis("Horizontal");
 
@@ -70,33 +76,23 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-            /*
-            if (Input.GetAxisRaw("Horizontal") > 0.5f) //if player looking right
-            {
-                transform.Rotate(0f, 0f, 0f);
-                // LookingRight = true;
-
-            }
-            else if (Input.GetAxisRaw("Horizontal") < -0.5f) //if player looking left
-            {
-                transform.Rotate(0f, 180f, 0f);
-                // LookingRight = false;
-            }
-            */
-
-
-
-
-
         
-        onground = IsTouchingGround();
+        onground = IsTouchingGround();  //maybe remove this variable
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (onground == true)
+            if (onground)
             {
                 RigidBody.velocity = new Vector2(RigidBody.velocity.x, jumpheight);
             }
         }
+
+
+
+        if (Input.GetKeyDown(KeyCode.Mouse0) && CanDash)
+        {
+            StartCoroutine(Dash());
+        }
+    
     }
 
     private bool IsTouchingGround()
@@ -120,7 +116,22 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
+    private IEnumerator Dash()
+    {
+        CanDash = false;
+        isDashing = true;
+        float OriginalGravity = RigidBody.gravityScale;
+        RigidBody.gravityScale = 0f;
+        RigidBody.velocity = new Vector2(transform.localScale.x * DashPower, 0f);
+        tr.emitting = true;
+        yield return new WaitForSeconds(DashTime);
+        tr.emitting = false;
+        RigidBody.gravityScale = OriginalGravity;
+        isDashing = false;
+        yield return new WaitForSeconds(DashCooldown);
+        CanDash = true;
 
+    }
 
 
 
