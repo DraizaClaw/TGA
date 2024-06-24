@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public bool LookingRight;
 
     [Header("Dash")]
-    private bool CanDash = true;
+    public bool CanDash = true;
     private bool isDashing;
     [SerializeField] private float DashPower;
     [SerializeField] private float DashTime;
@@ -49,7 +49,6 @@ public class PlayerMovement : MonoBehaviour
     //tweak these. player gains momentum but loses it the moment the else statement occurs //old line prob
     private void Update(/*      Makes player move left/right and jump     */)
     {
-
         if (isDashing)
         {
             return;
