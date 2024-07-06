@@ -6182,8 +6182,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1836466781}
+  - component: {fileID: 1836466782}
   m_Layer: 0
-  m_Name: UPS
+  m_Name: UPS/GM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6205,6 +6206,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1836466782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836466780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69d727f60dbbfc34e9854a4fb0973519, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1867817763
 GameObject:
   m_ObjectHideFlags: 0
@@ -6422,10 +6435,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2442962220679835704, guid: 1028c70dfc860fe41a0f1bd5948e17b2, type: 3}
-      propertyPath: Damage
-      value: -1
-      objectReference: {fileID: 0}
     - target: {fileID: 2442962220679835707, guid: 1028c70dfc860fe41a0f1bd5948e17b2, type: 3}
       propertyPath: m_Name
       value: DeathZone

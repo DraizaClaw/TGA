@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool facingRight;
     private Rigidbody2D RigidBody;
-    private BoxCollider2D boxcollider;//may not be needed
+    private CapsuleCollider2D boxcollider;//may not be needed
 
     private float horizontalInput;
     private bool onground;
@@ -32,21 +32,20 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float DashPower;
     [SerializeField] private float DashTime;
     [SerializeField] private float DashCooldown;
-    private TrailRenderer tr;//header dosen't work for some reason
+    private TrailRenderer tr;//header dosen't work for some reason //nvm
 
 
 
     private void Awake()
     {
         RigidBody = GetComponent<Rigidbody2D>();
-        boxcollider = GetComponent<BoxCollider2D>();
+        boxcollider = GetComponent<CapsuleCollider2D>();
         tr = GetComponent<TrailRenderer>();
         facingRight = true;
     }
 
 
 
-    //tweak these. player gains momentum but loses it the moment the else statement occurs //old line prob
     private void Update(/*      Makes player move left/right and jump     */)
     {
         if (isDashing)
@@ -87,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-        if (Input.GetKeyDown(KeyCode.Mouse0) && CanDash)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && CanDash || Input.GetKeyDown(KeyCode.Q) && CanDash)
         {
             StartCoroutine(Dash());
         }

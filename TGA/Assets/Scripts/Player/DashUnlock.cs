@@ -14,7 +14,7 @@ public class DashUnlock : MonoBehaviour
 
     private void Update()
     {
-        if (!DashUnlocked)
+        if (!DashUnlocked && GameObject.Find("Player") != null)
         {
             GameObject.Find("Player").GetComponent<PlayerMovement>().CanDash = false;
         }
