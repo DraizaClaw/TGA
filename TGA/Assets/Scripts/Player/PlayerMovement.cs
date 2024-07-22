@@ -34,7 +34,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float DashCooldown;
     private TrailRenderer tr;//header dosen't work for some reason //nvm
 
-
+    private void Start()
+    {
+        transform.position = new Vector3(PlayerPrefs.GetInt("Player Pos X"), PlayerPrefs.GetInt("Player Pos Y"), PlayerPrefs.GetInt("Player Pos Z"));
+    }
 
     private void Awake()
     {

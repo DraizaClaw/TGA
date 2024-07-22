@@ -14,6 +14,7 @@ public class Levels : MonoBehaviour
             SceneManager.LoadScene(currentSceneName);
 
             Time.timeScale = 1f;
+          
         }
     }
 }
